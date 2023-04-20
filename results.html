@@ -2,27 +2,35 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>Search Results</title>
+    <title>Results - Dishes.dish</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Recipes</a></li>
-          <li><a href="#">Ingredients</a></li>
+          <li><a href="mainpage.html">Home</a></li>
+          <li><a href="maincourses.html">Main Courses</a></li>
+          <li><a href="desserts.html">Desserts</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <h1>Search Results</h1>
-      <div class="results-container"></div>
+      <h1>Results</h1>
+      <ul>
+        <!-- Code to display the results of the search -->
+        <script>
+          const results = JSON.parse(localStorage.getItem("results"));
+          results.forEach(recipe => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+              <h2>${recipe.name}</h2>
+              <img src="${recipe.image}" alt="${recipe.name}">
+            `;
+            document.querySelector("ul").appendChild(li);
+          });
+        </script>
+      </ul>
     </main>
-    <footer>
-      Copyright &copy; 2023
-    </footer>
-    <script src="./script.js"></script>
   </body>
 </html>
