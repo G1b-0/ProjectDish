@@ -1,31 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>Find Your Next Meal</title>
+    <title>My Food Website</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
     <header>
+      <div class="logo">My Food Website</div>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
           <li><a href="#">Recipes</a></li>
-          <li><a href="#">Ingredients</a></li>
+          <li><a href="#">Menus</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Special Diets</a></li>
+          <li><a href="#">Videos</a></li>
         </ul>
       </nav>
     </header>
     <main>
-      <div class="banner">
-        <div class="search-container">
-          <input type="text" class="search-input" placeholder="What ingredients do you have?">
-          <button class="search-button">Search</button>
+      <section class="featured">
+        <h2>Featured Recipes</h2>
+        <div class="recipe">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Recipe"></a>
+          <h3><a href="#">Recipe Name</a></h3>
         </div>
-      </div>
+        <div class="recipe">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Recipe"></a>
+          <h3><a href="#">Recipe Name</a></h3>
+        </div>
+      </section>
+      <section class="categories">
+        <h2>Recipe Categories</h2>
+        <div class="category">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
+          <h3><a href="#">Breakfast</a></h3>
+        </div>
+        <div class="category">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
+          <h3><a href="#">Lunch</a></h3>
+        </div>
+        <div class="category">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
+          <h3><a href="#">Dinner</a></h3>
+        </div>
+        <div class="category">
+          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
+          <h3><a href="#">Desserts</a></h3>
+        </div>
+      </section>
     </main>
     <footer>
-      <p>Copyright &copy; Recipe Website 2023</p>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Press Room</a></li>
+        <li><a href="#">Advertise</a></li>
+      </ul>
+      <p>&copy; 2023 My Food Website</p>
     </footer>
   </body>
 </html>

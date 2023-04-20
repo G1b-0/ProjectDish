@@ -1,0 +1,200 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f03c53;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left:1.5rem;
+}
+
+nav a {
+color: #333;
+text-decoration: none;
+font-weight: bold;
+font-size: 1.1rem;
+}
+
+main {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+h2 {
+font-size: 2.5rem;
+margin-bottom: 2rem;
+font-weight: bold;
+text-align: center;
+}
+
+.recipe {
+margin-bottom: 3rem;
+border: 1px solid #e1e1e1;
+border-radius: 5px;
+overflow: hidden;
+}
+
+.recipe img {
+width: 100%;
+height: auto;
+}
+
+.recipe h3 {
+font-size: 1.8rem;
+margin: 0;
+margin-top: 1rem;
+font-weight: bold;
+text-align: center;
+color: #f03c53;
+text-transform: uppercase;
+}
+
+.recipe a {
+color: #333;
+text-decoration: none;
+}
+
+.categories {
+display: flex;
+flex-wrap: wrap;
+margin-bottom: 3rem;
+}
+
+.category {
+flex-basis: calc(25% - 2rem);
+margin-right: 2rem;
+margin-bottom: 2rem;
+border: 1px solid #e1e1e1;
+border-radius: 5px;
+overflow: hidden;
+}
+
+.category:last-child {
+margin-right: 0;
+}
+
+.category img {
+width: 100%;
+height: auto;
+}
+
+.category h3 {
+font-size: 1.8rem;
+margin: 0;
+margin-top: 1rem;
+font-weight: bold;
+text-align: center;
+color: #f03c53;
+text-transform: uppercase;
+}
+
+.category a {
+color: #333;
+text-decoration: none;
+}
+
+footer {
+background-color: #f5f5f5;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 2rem;
+font-size: 0.9rem;
+border-top: 1px solid #e1e1e1;
+}
+
+footer ul {
+display: flex;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+footer li {
+margin-left: 2rem;
+}
+
+footer a {
+color: #333;
+text-decoration: none;
+}
+
+footer p {
+margin: 0;
+color: #999;
+}
+
+.fa {
+font-family: FontAwesome;
+font-style: normal;
+font-weight: normal;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.fa-facebook-f:before {
+content: '\f09';
+}
+
+@media screen and (max-width: 768px) {
+header {
+flex-direction: column;
+align-items: flex-start;
+}
+
+.search {
+margin-top: 1rem;
+margin-bottom: 1rem;
+}
+
+.logo {
+margin-bottom: 1rem;
+}
+
+nav {
+margin-top: 1rem;
+}
+
+nav ul {
+flex-direction: column;
+}
+
+nav li {
+margin-left: 0;
+margin-bottom: 1rem;
+}
+
+.category {
+flex-basis: calc(50% - 1rem);
+margin-right: 1rem;
+}
+
+.category:last-child {
+margin-right: 0;
+}
+}
+
+vbnet
