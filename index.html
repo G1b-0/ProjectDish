@@ -1,62 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Food Website</title>
+    <meta charset="UTF-8">
+    <title>Food Recipe Website</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
+    <!-- Header with Cover Image and Navigation Bar -->
     <header>
-      <div class="logo">My Food Website</div>
+      <img src="cover-image.jpg" alt="Cover Image">
       <nav>
         <ul>
-          <li><a href="#">Recipes</a></li>
-          <li><a href="#">Menus</a></li>
-          <li><a href="#">Community</a></li>
-          <li><a href="#">Special Diets</a></li>
-          <li><a href="#">Videos</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="maincourses.html">Main Courses</a></li>
+          <li><a href="desserts.html">Desserts</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
         </ul>
       </nav>
     </header>
+
+    <!-- Main Content -->
     <main>
-      <section class="featured">
-        <h2>Featured Recipes</h2>
-        <div class="recipe">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Recipe"></a>
-          <h3><a href="#">Recipe Name</a></h3>
-        </div>
-        <div class="recipe">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Recipe"></a>
-          <h3><a href="#">Recipe Name</a></h3>
-        </div>
-      </section>
-      <section class="categories">
-        <h2>Recipe Categories</h2>
-        <div class="category">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
-          <h3><a href="#">Breakfast</a></h3>
-        </div>
-        <div class="category">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
-          <h3><a href="#">Lunch</a></h3>
-        </div>
-        <div class="category">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
-          <h3><a href="#">Dinner</a></h3>
-        </div>
-        <div class="category">
-          <a href="#"><img src="https://via.placeholder.com/500x300" alt="Category"></a>
-          <h3><a href="#">Desserts</a></h3>
-        </div>
-      </section>
+      <!-- Search Bar -->
+      <form action="results.html" method="get">
+        <input type="text" name="ingredient" placeholder="Search for ingredients">
+        <button type="submit">Search</button>
+      </form>
     </main>
+
+    <!-- Footer -->
     <footer>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Press Room</a></li>
-        <li><a href="#">Advertise</a></li>
-      </ul>
-      <p>&copy; 2023 My Food Website</p>
+      <p>&copy; Food Recipe Website 2023</p>
     </footer>
   </body>
 </html>
