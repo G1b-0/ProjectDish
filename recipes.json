@@ -1,0 +1,17 @@
+{
+  "recipe1": {
+    "ingredients": [
+      "apple",
+      "ingredient2",
+      "ingredient3"
+    ]
+  },
+  "recipe2": {
+    "ingredients": [
+      "ingredient2",
+      "ingredient4",
+      "ingredient5"
+    ]
+  },
+  ...
+}

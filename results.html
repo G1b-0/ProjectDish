@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Results - Dishes.dish</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="mainpage.html">Home</a></li>
-          <li><a href="maincourses.html">Main Courses</a></li>
-          <li><a href="desserts.html">Desserts</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <h1>Results</h1>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="results.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
       <ul>
-        <!-- Code to display the results of the search -->
-        <script>
-          const results = JSON.parse(localStorage.getItem("results"));
-          results.forEach(recipe => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <h2>${recipe.name}</h2>
-              <img src="${recipe.image}" alt="${recipe.name}">
-            `;
-            document.querySelector("ul").appendChild(li);
-          });
-        </script>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Recipes</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
-    </main>
-  </body>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+  <title>Search Results</title>
+</head>
+<body>
+  <h2>Search Results</h2>
+  <ul id="results"></ul>
+
+  <script>
+    // Get the search results from the query string
+    const results = JSON.parse(decodeURIComponent(window.location.search.substring(1).split('=')[1]));
+
+    // Display the search results
+    const list = document.querySelector('#results');
+    results.forEach(result => {
+      const item = document.createElement('li');
+      item.textContent = result.title;
+      list.appendChild(item);
+    });
+  </script>
+</body>
 </html>
