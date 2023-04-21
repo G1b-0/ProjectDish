@@ -21,12 +21,14 @@
   <input type="text" id="search-input" placeholder="Search...">
   <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
 </form>
-  <title>Search Results</title>
+</nav>
+</header>
+<section class="hero">
+<title>Search Results</title>
 </head>
 <body>
-  <h2>Search Results</h2>
+  <h2>Here Are Your Results</h2>
   <ul id="results"></ul>
-
   <script>
     // Get the search results from the query string
     const results = JSON.parse(decodeURIComponent(window.location.search.substring(1).split('=')[1]));
