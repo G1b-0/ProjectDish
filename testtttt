@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="results.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Recipes</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+</nav>
+</header>
+<section class="hero">
+<title>Search Results</title>
+</head>
+<body>
+  <h2>Here Are Your Results</h2>
+  <ul id="results"></ul>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</body>
+</html>

@@ -1,4 +1,4 @@
-header, section.featured, footer {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,22 +6,28 @@ header, section.featured, footer {
 
 body {
   font-family: 'Lato', sans-serif;
-  background: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 header {
-  background: #252525;
-  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
 }
 
 header nav img {
-  width: 120px;
+  height: 50px;
 }
 
 header nav ul {
@@ -30,68 +36,139 @@ header nav ul {
 
 header nav ul li {
   list-style: none;
-  margin-right: 20px;
+  margin-right: 220px;
 }
 
 header nav ul li a {
-  color: #fff;
   text-decoration: none;
+  color: #333;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 header nav form {
   display: flex;
-  align-items: center;
 }
 
 header nav form input[type="text"] {
-  padding: 10px;
   border: none;
-  background: #fff;
-  border-radius: 20px 0 0 20px;
-  width: 300px;
-  margin-right: 20px;
+  border-radius: 25px 0 0 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 350px;
+  height: 50px;
 }
 
 header nav form button[type="submit"] {
-  padding: 10px 20px;
-  background: #252525;
+  background-color: #333;
   color: #fff;
   border: none;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 25px 25px 0;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-section.featured {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.results {
+  padding: 80px;
+}
+
+.results h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.card {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   padding: 20px;
-}
-
-section.featured .card {
-  width: 30%;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  margin-right: 30px;
+  display: inline-block;
   text-align: center;
-  padding: 40px;
-  margin-bottom: 20px;
+  max-width: 300px;
 }
 
-section.featured .card img {
+.card img {
   width: 100%;
-  border-radius: 50%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 
-section.featured .card h3 {
-  font-weight: bold;
+.card h3 {
+  font-size: 20px;
+  font-weight: 800;
   margin-bottom: 20px;
+  text-align: center;
+  max-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+
+.card a {
+  text-decoration: none;
+  background-color: #333;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
 
 footer {
-  background: #252525;
+  background-color: #333;
   color: #fff;
-  padding: 20px;
   text-align: center;
+  padding: 40px;
+}
+
+footer p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(cover.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.hero a {
+  background-color: #333;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
 }

@@ -5,41 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="results.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-  <title>Recipe Website</title>
+  <title>Recipe Results</title>
 </head>
 <body>
   <header>
     <nav>
       <img src="logo.png" alt="Logo">
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="mainpage.html">Home</a></li>
         <li><a href="#">Recipes</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <form>
+
   <input type="text" id="search-input" placeholder="Search...">
   <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
-</form>
-</nav>
-</header>
-<section class="hero">
-<title>Search Results</title>
-</head>
-<body>
-  <h2>Here Are Your Results</h2>
-  <ul id="results"></ul>
-  <script>
-    // Get the search results from the query string
-    const results = JSON.parse(decodeURIComponent(window.location.search.substring(1).split('=')[1]));
+  </form>
+    </nav>
+  </header>
+  <section class="hero">
+      <h1>Discover delicious recipes</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor nisi ut urna blandit, at tempor metus bibendum.</p>
+      <a href="#">Explore Recipes</a>
+  </section>
 
-    // Display the search results
-    const list = document.querySelector('#results');
-    results.forEach(result => {
-      const item = document.createElement('li');
-      item.textContent = result.title;
-      list.appendChild(item);
-    });
+  <section class="results">
+    <h2>Search Results</h2>
+    <div id="results-container"></div>
+  </section>
+
+  <footer>
+    <p>&copy; Recipe Website 2021</p>
+  </footer>
+
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const resultsJSON = urlParams.get('results');
+
+    if (resultsJSON) {
+      const results = JSON.parse(decodeURIComponent(resultsJSON));
+      const resultsContainer = document.getElementById('results-container');
+
+      results.forEach((result) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = result.strMealThumb;
+        img.alt = result.strMeal;
+
+        const title = document.createElement('h3');
+        title.textContent = result.strMeal;
+
+        const link = document.createElement('a');
+        link.href = result.strSource || result.strYoutube;
+        link.textContent = 'View Recipe';
+        link.target = '_blank';
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(link);
+        resultsContainer.appendChild(card);
+      });
+    } else {
+      const resultsContainer = document.getElementById('results-container');
+      const message = document.createElement('p');
+      message.textContent = 'No results found.';
+      resultsContainer.appendChild(message);
+    }
   </script>
+
+
 </body>
 </html>
