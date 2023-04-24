@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nice Burger Recipe</title>
+  <link rel="stylesheet" href="recipes.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutme.html">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+    </nav>
+  </header>
+  <h1>Nice Burger</h1>
+  <section class="recipe">
+      <h1>Nice Burger</h1>
+    <div class="image-container">
+      <img src="burger.jpg" alt="Nice Burger">
+    </div>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        <li>1 lb ground beef</li>
+        <li>1 tsp salt</li>
+        <li>1 tsp pepper</li>
+        <li>4 hamburger buns</li>
+        <li>4 slices of cheese (optional)</li>
+        <li>1 tomato, sliced</li>
+        <li>4 lettuce leaves</li>
+        <li>1 red onion, sliced</li>
+        <li>Ketchup, mustard, and mayo, to taste</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+        <li>In a large bowl, combine ground beef, salt, and pepper. Mix untilwell combined. Divide the mixture into 4 equal portions and shape each into a patty.</li>
+<li>Preheat a grill or a large skillet over medium heat. Cook the patties for 4-5 minutes per side, or until they reach your desired level of doneness. If using cheese, add a slice to each patty during the last minute of cooking and cover the grill or skillet to allow it to melt.</li>
+<li>While the patties are cooking, lightly toast the hamburger buns on the grill or in a toaster.</li>
+<li>Assemble the burgers by placing a lettuce leaf on the bottom half of each bun. Add a cooked patty with cheese (if using) on top of the lettuce. Layer tomato and onion slices on top of the patty, and add ketchup, mustard, and mayo to taste. Finally, place the top half of the bun on the assembled ingredients.</li>
+<li>Serve immediately with your favorite side dish.</li>
+</ol>
+</div>
+
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>

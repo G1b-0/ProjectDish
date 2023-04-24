@@ -1,28 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="about.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <header>
-        <h1>About Us</h1>
-    </header>
-    <main>
-        <section class="about-section">
-            <h2>Our Story</h2>
-            <p>
-                We started our journey in 2010 with a passion for creating delicious recipes for everyone. Our mission is to provide high-quality, easy-to-follow recipes that cater to a wide range of dietary needs.
-            </p>
-        </section>
-        <section class="about-section">
-            <h2>Our Team</h2>
-            <p>
-                Our dedicated team of chefs and food enthusiasts work tirelessly to create recipes that are both delicious and nutritious. We believe that everyone should be able to enjoy delicious food, no matter their dietary restrictions or preferences.
-            </p>
-        </section>
-    </main>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+
+  </header>
+
+  <section class="hero">
+    <h1>Discover delicious recipes</h1>
+    <p>Find Your Next Meal By Only 1 Ingredient Or Take A Look At The Creators Favriout Meals.</p>
+    <a href="recipes.html">Explore Recipes</a>
+  </section>
+
+  <section class="about">
+    <h1>About Us</h1>
+    <div class="image-container">
+      <img src="innes.jpg" alt="Innes Gibson">
+    </div>
+    <div class="content">
+      <h2>Innes Gibson</h2>
+      <p class="intro">Welcome to my culinary journey! I'm a passionate chef with 2 years of experience, and I'm here to share my love for food with you.</p>
+      <div class="story">
+        <h3>My Story</h3>
+        <p>Born and raised in Carluke, a small town just outside of Glasgow, I've always been fascinated by the power of food to bring people together. My passion for cooking led me to pursue a career in the culinary world, where I've had the opportunity to work in various kitchens and learn from talented chefs.</p>
+        <p>As I continue my academic journey by pursuing a university degree, I decided to create this website as a platform to share my favorite recipes, culinary insights, and the joy of cooking with fellow food enthusiasts.</p>
+      </div>
+      <div class="contact">
+        <h3>Get In Touch</h3>
+        <p>If you have any questions, suggestions, or just want to talk about food, please feel free to reach out to me:</p>
+        <a href="mailto:inneskgibson@gmail.com" class="email-link">inneskgibson@gmail.com</a>
+      </div>
+    </div>
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
 </body>
 </html>
