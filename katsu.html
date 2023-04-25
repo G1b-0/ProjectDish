@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Katsu Curry</title>
+  <link rel="stylesheet" href="recipes.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutme.html">About</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+    </nav>
+  </header>
+  <h1>Nice Burger</h1>
+  <section class="recipe">
+      <h1>Chicken Katsu</h1>
+    <div class="image-container">
+      <img src="Katsu.jpg" alt="katsu">
+    </div>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+          <li>  4 boneless, skinless chicken breasts</li>
+          <li>  1 cup all-purpose flour</li>
+          <li>  2 large eggs</li>
+          <li>  2 cups panko breadcrumbs</li>
+          <li>  Salt and pepper, to taste</li>
+          <li>  1/2 cup vegetable oil, for frying</li>
+          <li>  1 onion, chopped</li>
+          <li>  2 cloves garlic, minced</li>
+          <li>  1 tablespoon ginger, grated</li>
+          <li>  1 large carrot, chopped</li>
+          <li>  1 large red bell pepper, chopped</li>
+          <li>  2 tablespoons all-purpose flour</li>
+          <li>  2 tablespoons garam masala</li>
+          <li>  1 tablespoon curry powder</li>
+          <li>  1 teaspoon turmeric</li>
+          <li>  1 teaspoon paprika</li>
+          <li>  1 can (14 ounces) diced tomatoes</li>
+          <li>  1 cup chicken broth</li>
+          <li>  Salt and pepper, to taste</li>
+          <li>  1/4 cup heavy cream</li>
+          <li>  Rice, for serving</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+     <li>Preheat oven to 400°F. Line a baking sheet with parchment paper.</li>
+     <li>Pound chicken breasts to an even thickness and season with salt and pepper.</li>
+     <li>Place flour in a shallow dish. In another shallow dish, beat eggs. Place breadcrumbs in a third shallow dish.</li>
+     <li>Coat each chicken breast in flour, then dip in beaten eggs, and coat in breadcrumbs.</li>
+     <li>Heat oil in a large skillet over medium-high heat. Fry chicken breasts until golden brown and cooked through, about 3-4 minutes per side. Place on the prepared baking sheet and keep warm in the oven.</li>
+     <li>In the same skillet, add onion, garlic, and ginger and cook until softened, about 3 minutes. Add carrot and red bell pepper and cook until tender, about 5 minutes.</li>
+     <li>Stir in flour, garam masala, curry powder, turmeric, and paprika until vegetables are coated.</li>
+     <li>Stir in diced tomatoes and chicken broth. Season with salt and pepper. Bring to a simmer and let cook for 10 minutes.</li>
+     <li>Stir in heavy cream and let cook for another 2 minutes.</li>
+     <li>Serve chicken katsu over rice and top with sauce.</li>
+   </ol>
+</div>
+
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>

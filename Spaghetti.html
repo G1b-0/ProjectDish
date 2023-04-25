@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaghetti Bolognese</title>
+  <link rel="stylesheet" href="recipes.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutme.html">About</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+    </nav>
+  </header>
+  <h1>Spaghetti Bolognese</h1>
+  <section class="recipe">
+      <h1>Spaghetti Bolognese</h1>
+    <div class="image-container">
+      <img src="Spaghetti.jpg" alt="Spaghetti Bolognese">
+    </div>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+      <li>1 pound spaghetti</li>
+      <li>2 tablespoons olive oil</li>
+      <li>1 onion, chopped</li>
+      <li>2 cloves garlic, minced</li>
+      <li>1 pound ground beef</li>
+      <li>1 can (14 ounces) diced tomatoes</li>
+      <li>1 tablespoon tomato paste</li>
+      <li>1 teaspoon dried basil</li>
+      <li>1 teaspoon dried oregano</li>
+      <li>1/2 teaspoon sugar</li>
+      <li>Salt and pepper, to taste</li>
+      <li>Parmesan cheese, for serving</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+      <li>Cook spaghetti according to package directions. Drain and set aside.</li>
+      <li>In a large saucepan, heat olive oil over medium heat. Add onion and garlic and cook until softened, about 5 minutes.</li>
+      <li>Add ground beef and cook until browned, about 5 minutes. Drain excess fat.</li>
+      <li>Stir in diced tomatoes, tomato paste, basil, oregano, and sugar. Season with salt and pepper.</li>
+      <li>Bring to a simmer and let cook for 10 minutes.</li>
+      <li>Serve spaghetti topped with Bolognese sauce and sprinkle with Parmesan cheese.</li>
+      </ol>
+</div>
+
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Katsu Curry</title>
+  <link rel="stylesheet" href="recipes.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutme.html">About</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+    </nav>
+  </header>
+  <h1>Nice Burger</h1>
+  <section class="recipe">
+      <h1>Baked Mac and Cheese Recipe</h1>
+    <div class="image-container">
+      <img src="mac.jpg" alt="mac">
+    </div>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+      <li>1 pound elbow macaroni</li>
+      <li>4 tablespoons butter</li>
+      <li>4 tablespoons all-purpose flour</li>
+      <li>3 cups whole milk</li>
+      <li>1 teaspoon dry mustard</li>
+      <li>1 teaspoon salt</li>
+      <li>1/2 teaspoon black pepper</li>
+      <li>8 ounces grated cheddar cheese</li>
+      <li>8 ounces grated Monterey Jack cheese</li>
+      <li>1 cup panko breadcrumbs</li>
+      <li>2 tablespoons melted butter</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+        <li>Preheat oven to 375°F. Grease a 9x13 inch baking dish.</li>
+        <li>Cook macaroni according to package directions. Drain and set aside.</li>
+        <li>In a large saucepan, melt butter over medium heat. Whisk in flour and cook for 1 minute.</li>
+        <li>Gradually whisk in milk, dry mustard, salt, and pepper. Cook, whisking constantly, until mixture comes to a boil and thickens, about 5 minutes.</li>
+        <li>Remove from heat and stir in grated cheddar cheese and Monterey Jack cheese until melted and smooth.</li>
+        <li>Combine macaroni and cheese sauce in the prepared baking dish. In a small bowl, mix together breadcrumbs and melted butter. Sprinkle over the top of the macaroni mixture.</li>
+        <li>Bake for 25-30 minutes, or until golden brown and bubbly. Serve hot.</li>
+      </ol>
+</div>
+
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>

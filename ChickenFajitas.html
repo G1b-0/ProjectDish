@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Fajitas</title>
+  <link rel="stylesheet" href="recipes.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <title>Recipe Website</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="Logo">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="aboutme.html">About</a></li>
+      </ul>
+      <form>
+  <input type="text" id="search-input" placeholder="Search...">
+  <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+</form>
+    </nav>
+  </header>
+  <h1>Chicken Fajitas</h1>
+  <section class="recipe">
+      <h1>Chicken Fajitas</h1>
+    <div class="image-container">
+      <img src="ChickenFajitas.jpg" alt="Chicken Fajitas">
+    </div>
+    <div class="ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        <li>1 pound boneless, skinless chicken breasts, sliced into thin strips</li>
+        <li>2 tablespoons olive oil</li>
+        <li>1 red bell pepper, sliced</li>
+        <li>1 yellow bell pepper, sliced</li>
+        <li>1 onion, sliced</li>
+        <li>2 cloves garlic, minced</li>
+        <li>1 teaspoon chili powder</li>
+        <li>1 teaspoon cumin</li>
+        <li>1/2 teaspoon paprika</li>
+        <li>Salt and pepper, to taste</li>
+        <li>8 flour tortillas</li>
+        <li>Sour cream, for serving</li>
+        <li>Salsa, for serving</li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ol>
+      <li>In a large skillet, heat olive oil over high heat. Add chicken and cook until browned, about 5 minutes.</li>
+      <li>Add red and yellow bell peppers, onion, and garlic and cook until vegetables are tender, about 5 minutes.</li>
+      <li>Stir in chili powder, cumin, paprika, salt, and pepper and cook for another minute.</li>
+      <li>Warm tortillas according to package instructions.</li>
+      <li>Serve chicken mixture in tortillas and top with sour cream and salsa, if desired.</li>
+      </ol>
+</div>
+
+  </section>
+  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+  <script src="script.js">
+  const form = document.querySelector('form');
+  const searchInput = document.querySelector('#search-input');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const searchTerm = searchInput.value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'recipes.json', true);
+    xhr.onload = function() {
+      if (this.status === 200) {
+        const recipes = JSON.parse(this.responseText);
+        const results = recipes.filter(function(recipe) {
+          return recipe.ingredients.includes(searchTerm);
+        });
+        const queryString = '?results=' + encodeURIComponent(JSON.stringify(results));
+        window.location.href = 'results.html' + queryString;
+      }
+    };
+    xhr.send();
+  });
+</script>
+</body>
+</html>
